@@ -32,6 +32,8 @@ namespace Carfinance.Phoenix.Kata.Angular.Tests
             bookingService = new BookingService(dataServiceMock.Object);
         }
 
+        [TestCleanup]
+
         #region Create
       
         [TestMethod]
