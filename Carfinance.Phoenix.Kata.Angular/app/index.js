@@ -32,7 +32,8 @@
                             })
                             .map((booking, i) => {
                                 const style = {};
-                                booking.numberOfPeople > 6 ? style.color = 'red' : style.color = 'black';
+                                booking.numberOfPeople > 6 ? style.color = 'red' : 
+                                booking.numberOfPeople === 1 ? style.color = 'blue' : style.color = 'black';
                                 return (
                                     <tr key={i} style={style}>
                                         <td>{booking.contactName}</td>
