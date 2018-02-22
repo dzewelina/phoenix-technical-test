@@ -22,7 +22,15 @@
                             <th>Table Number</th>
                             <th>Booking Time</th>
                         </tr>
-                        {bookings.map((booking, i) => {
+                        {bookings
+                            .map(booking => {
+                                booking.bookingTime = new Date(booking.bookingTime);
+                                return booking;
+                            })
+                            .sort((bookingA, bookingB) => {                                
+                                return bookingA.bookingTime - bookingB.bookingTime;
+                            })
+                            .map((booking, i) => {
                             return (
                                 <tr key={i}>
                                     <td>{booking.contactName}</td>
@@ -39,8 +47,7 @@
         );
     };
 
-    convertTime = time => {
-        const date = new Date(time);
+    convertTime = date => {
         const day = `0${date.getDate()}`.slice(-2);
         const month = `0${date.getMonth() + 1}`.slice(-2);
         const year = date.getFullYear();
