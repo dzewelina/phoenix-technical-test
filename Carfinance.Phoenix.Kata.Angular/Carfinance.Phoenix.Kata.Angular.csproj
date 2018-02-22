@@ -159,6 +159,7 @@
     <Compile Include="Services\Interfaces\IDataService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.css" />
     <Content Include="app\index.js" />
     <Content Include="app\module.js" />
     <Content Include="Content\bootstrap-grid.css" />

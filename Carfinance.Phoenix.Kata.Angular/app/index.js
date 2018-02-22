@@ -23,34 +23,34 @@
                             <th>Booking Time</th>
                         </tr>
                         {bookings
+                            .sort((bookingA, bookingB) => {
+                                if (bookingA.bookingTime < bookingB.bookingTime) return -1;
+                                if (bookingA.bookingTime > bookingB.bookingTime) return 1;
+                                return 0;
+                            })
                             .map(booking => {
-                                booking.bookingTime = new Date(booking.bookingTime);
-                                return booking;
-                            })
-                            .sort((bookingA, bookingB) => {                                
-                                return bookingA.bookingTime - bookingB.bookingTime;
-                            })
-                            .map((booking, i) => {
                                 const style = {};
-                                booking.numberOfPeople > 6 ? style.color = 'red' : 
-                                booking.numberOfPeople === 1 ? style.color = 'blue' : style.color = 'black';
+                                booking.numberOfPeople > 6 ? style.color = 'red' :
+                                    booking.numberOfPeople === 1 ? style.color = 'blue' : style.color = 'black';
                                 return (
-                                    <tr key={i} style={style}>
+                                    <tr key={booking.bookingId} style={style}>
                                         <td>{booking.contactName}</td>
                                         <td>{booking.contactNumber}</td>
                                         <td>{booking.numberOfPeople}</td>
                                         <td>{booking.tableNumber}</td>
                                         <td>{this.convertTime(booking.bookingTime)}</td>
                                     </tr>
-                            )
-                        })}
+                                );
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
         );
     };
 
-    convertTime = date => {
+    convertTime = time => {
+        const date = new Date(time);
         const day = `0${date.getDate()}`.slice(-2);
         const month = `0${date.getMonth() + 1}`.slice(-2);
         const year = date.getFullYear();
