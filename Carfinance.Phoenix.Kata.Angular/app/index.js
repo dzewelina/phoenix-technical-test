@@ -31,14 +31,16 @@
                                 return bookingA.bookingTime - bookingB.bookingTime;
                             })
                             .map((booking, i) => {
-                            return (
-                                <tr key={i}>
-                                    <td>{booking.contactName}</td>
-                                    <td>{booking.contactNumber}</td>
-                                    <td>{booking.numberOfPeople}</td>
-                                    <td>{booking.tableNumber}</td>
-                                    <td>{this.convertTime(booking.bookingTime)}</td>
-                                </tr>
+                                const style = {};
+                                booking.numberOfPeople > 6 ? style.color = 'red' : style.color = 'black';
+                                return (
+                                    <tr key={i} style={style}>
+                                        <td>{booking.contactName}</td>
+                                        <td>{booking.contactNumber}</td>
+                                        <td>{booking.numberOfPeople}</td>
+                                        <td>{booking.tableNumber}</td>
+                                        <td>{this.convertTime(booking.bookingTime)}</td>
+                                    </tr>
                             )
                         })}
                     </tbody>
