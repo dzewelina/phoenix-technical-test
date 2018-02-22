@@ -13,6 +13,7 @@
         const { bookings } = this.state;
         return (
             <div>
+                <button type='button' className='btn btn-primary float-right'>New Booking</button>
                 <table>
                     <tbody>
                         <tr>
