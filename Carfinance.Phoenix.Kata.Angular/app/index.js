@@ -13,7 +13,7 @@
         const { bookings } = this.state;
         return (
             <div>
-                <button type='button' className='btn btn-primary float-right'>New Booking</button>
+                <a href='../createBooking.html'><button type='button' className='btn btn-primary float-right'>New Booking</button></a>
                 <table>
                     <tbody>
                         <tr>
