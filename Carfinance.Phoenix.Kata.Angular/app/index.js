@@ -29,7 +29,7 @@
                                     <td>{booking.contactNumber}</td>
                                     <td>{booking.numberOfPeople}</td>
                                     <td>{booking.tableNumber}</td>
-                                    <td>{booking.bookingTime}</td>
+                                    <td>{this.convertTime(booking.bookingTime)}</td>
                                 </tr>
                             )
                         })}
@@ -37,6 +37,16 @@
                 </table>
             </div>
         );
+    };
+
+    convertTime = time => {
+        const date = new Date(time);
+        const day = `0${date.getDate()}`.slice(-2);
+        const month = `0${date.getMonth() + 1}`.slice(-2);
+        const year = date.getFullYear();
+        const hours = `0${date.getHours()}`.slice(-2);
+        const minutes = `0${date.getMinutes()}`.slice(-2);
+        return `${day}/${month}/${year} ${hours}:${minutes}`
     };
 };
 
