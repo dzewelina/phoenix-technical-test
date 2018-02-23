@@ -4,7 +4,7 @@
         return (
             <div>
                 <h5>Create Booking</h5>
-                <form>
+                <form onSubmit={this.handleBooking}>
                     <div className='form-group'>
                         <label>Contact Name</label>
                         <input type='text' className='form-control' id='contactName' />
@@ -29,6 +29,16 @@
                 </form>
             </div>    
         );
+    };
+
+    handleBooking = event => {
+        const newBooking = {
+            contactName: event.target.elements.contactName.value,
+            contactNumber: event.target.elements.contactNumber.value,
+            numberOfPeople: Number(event.target.elements.numberOfPeople.value),
+            tableNumber: Number(event.target.elements.tableNumber.value),
+            bookingTime: event.target.elements.bookingTime.value
+        };
     };
 };
 
